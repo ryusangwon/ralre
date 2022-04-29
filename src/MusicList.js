@@ -4,21 +4,16 @@ import { withStyles } from '@material-ui/styles';
 import { Favorite, FavoriteBorder, PlayArrow } from '@material-ui/icons';
 import SnackbarMsg from './snackmsg';
 
-const styles = theme => ({
-    content: {},
-    layout: {
-        display: 'flex',
-        justifyContent: 'center',
-    },
+const styles = {
     card: {
         backgroundColor: "pink",
         minWidth: 120,
         maxWidth: 300,
         marginBottom: 20,
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        // marginLeft: 'auto',
+        // marginRight: 'auto',
     },
-});
+};
 
 function MusicList (props) {
 
@@ -27,7 +22,7 @@ function MusicList (props) {
 
     const toggleFavorite = (id) => {
         console.log(likes[id]);
-        if (likes[id] == undefined){
+        if (likes[id] === undefined){
             likes[id] = true;
         } else{
             likes[id] = (likes[id]) ? false : true;
@@ -48,12 +43,12 @@ function MusicList (props) {
             {props.list.results.map(item => {
                 return(
                     <Card key={item.collectionId} variant="outlined">
-                        <CardMedia 
+                        {/* <CardMedia 
                             component="img"
-                            height="50%"
+                            // height="100%"
                             image={item.artworkUrl100}
                             alt="Black Pink"
-                        />
+                        /> */}
                         <CardContent>
                             <Typography variant="subtitle1"> {item.artistName}</Typography>
                             <Typography variant="subtitle2"> {item.collectionCensoredName}</Typography>
