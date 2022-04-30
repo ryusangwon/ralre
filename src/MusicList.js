@@ -28,16 +28,14 @@ function MusicList (props) {
             likes[id] = (likes[id]) ? false : true; 
         }
         console.log(likes);
-        setSnackbar({open: true, msg: "Thanks for response"});
-        console.log("Test");
+        setSnackbar({open: true, msg: `${id} checked`});
     }
 
     const handleSnackbarClose = (event, reason) => {
         if (reason === "clickaway"){
             return;
         }
-        setSnackbar({open: false, msg: 'Unlike'});
-        
+        setSnackbar({open: false});
     }
     const classes = {props};
 
@@ -70,6 +68,7 @@ function MusicList (props) {
                     </Card>
                 )
             })}
+            <SnackbarMsg open={snackbar.open} message={snackbar.msg} onClose={handleSnackbarClose}></SnackbarMsg>
         </div>
     )
 }
