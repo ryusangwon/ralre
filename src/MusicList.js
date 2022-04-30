@@ -22,12 +22,14 @@ function MusicList (props) {
 
     const toggleFavorite = (id) => {
         console.log(likes[id]);
-        if (likes[id] === undefined){
+        if (likes[id] == undefined){
             likes[id] = true;
         } else{
             likes[id] = (likes[id]) ? false : true; 
         }
-        setLikes({open: true, msg: `Thanks for response`});
+        console.log(likes);
+        setSnackbar({open: true, msg: "Thanks for response"});
+        console.log("Test");
     }
 
     const handleSnackbarClose = (event, reason) => {
@@ -35,6 +37,7 @@ function MusicList (props) {
             return;
         }
         setSnackbar({open: false, msg: 'Unlike'});
+        
     }
     const classes = {props};
 
@@ -46,7 +49,7 @@ function MusicList (props) {
                     <Card key={item.collectionId} className={props.classes['card']}>
                         <CardMedia 
                             component="img"
-                            // height="100%"
+                            height="100%"
                             image={item.artworkUrl100}
                             alt="Black Pink"
                         />
@@ -60,9 +63,9 @@ function MusicList (props) {
                             </IconButton>
                             <Button size="small">Share</Button>
                             <Button size="small">More about Artist</Button>
-                            {/* <IconButton onClick={toggleFavorite(item.collectionId)}>
-                            {this.state.likes[item.collectionId] ? <Favorite /> : <FavoriteBorder />}
-                            </IconButton> */}
+                            <IconButton onClick={() => {toggleFavorite(item.collectionId)}}>
+                            {likes[item.collectionId] ? <Favorite /> : <FavoriteBorder />}
+                            </IconButton>
                         </CardActions>
                     </Card>
                 )
